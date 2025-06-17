@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/skobyn-dataforseo-mcp-server-badge.png)](https://mseep.ai/app/skobyn-dataforseo-mcp-server)
+
 # SEO Tools MCP Server
 
 A comprehensive stdio MCP (Model Context Protocol) server for SEO APIs. This server allows LLMs (Large Language Models) to interact with DataForSEO API functions and other SEO tools.
