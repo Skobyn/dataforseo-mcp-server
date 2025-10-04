@@ -60,7 +60,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Organic Task-based (POST, READY, GET)
@@ -89,7 +90,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Maps Live
@@ -106,7 +108,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Images Live
@@ -121,7 +124,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google News Live
@@ -136,7 +140,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Jobs Live
@@ -151,7 +156,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Shopping Live
@@ -166,7 +172,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Organic Live
@@ -181,7 +188,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Yahoo Organic Live
@@ -196,7 +204,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Baidu Organic Live
@@ -211,7 +220,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // YouTube Organic Live
@@ -226,7 +236,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // SERP API Locations
@@ -244,7 +255,8 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // SERP API Languages
@@ -256,6 +268,7 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>("/serp/google/languages");
       
       return response;
-    }
+    },
+    apiClient
   );
 }

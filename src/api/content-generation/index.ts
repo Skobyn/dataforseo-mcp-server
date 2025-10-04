@@ -27,7 +27,8 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Generation Generate Paraphrase
@@ -48,7 +49,8 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Generation Generate Meta Tags
@@ -69,7 +71,8 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Generation Generate Summarize
@@ -90,7 +93,8 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Generation Generate Title
@@ -111,7 +115,8 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Generation Explain Code
@@ -132,6 +137,7 @@ export function registerContentGenerationTools(server: McpServer, apiClient: Dat
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 }

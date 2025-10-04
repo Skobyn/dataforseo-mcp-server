@@ -21,7 +21,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Technologies Technologies
@@ -40,7 +41,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Technologies Domains by Technology
@@ -61,7 +63,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Technologies Domain Technologies
@@ -80,7 +83,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Technologies Technology Stats
@@ -99,7 +103,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Technologies Domains by HTML Terms
@@ -119,7 +124,8 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Whois Overview
@@ -136,6 +142,7 @@ export function registerDomainAnalyticsTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 }

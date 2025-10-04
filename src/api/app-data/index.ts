@@ -24,9 +24,10 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/google_play/search/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
   
   // App Data Google Play App Info
@@ -45,11 +46,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/google_play/app_info/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data Google Play Reviews
   registerTool(
     server,
@@ -70,11 +72,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/google_play/reviews/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data Google Play Locations
   registerTool(
     server,
@@ -88,11 +91,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         : "/app_data/google_play/locations";
         
       const response = await client.get<DataForSeoResponse<any>>(url);
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data Google Play Languages
   registerTool(
     server,
@@ -100,11 +104,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
     {},
     async (_params, client) => {
       const response = await client.get<DataForSeoResponse<any>>("/app_data/google_play/languages");
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data App Store Search
   registerTool(
     server,
@@ -124,11 +129,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/apple/search/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data App Store App Info
   registerTool(
     server,
@@ -145,11 +151,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/apple/app_info/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data App Store Reviews
   registerTool(
     server,
@@ -170,11 +177,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         "/app_data/apple/reviews/live",
         [params]
       );
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data App Store Locations
   registerTool(
     server,
@@ -188,11 +196,12 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
         : "/app_data/apple/locations";
         
       const response = await client.get<DataForSeoResponse<any>>(url);
-      
+
       return response;
-    }
+    },
+    apiClient
   );
-  
+
   // App Data App Store Languages
   registerTool(
     server,
@@ -200,8 +209,9 @@ export function registerAppDataTools(server: McpServer, apiClient: DataForSeoCli
     {},
     async (_params, client) => {
       const response = await client.get<DataForSeoResponse<any>>("/app_data/apple/languages");
-      
+
       return response;
-    }
+    },
+    apiClient
   );
 }

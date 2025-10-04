@@ -81,11 +81,12 @@ export function registerLocalFalconTools(server: McpServer, config: LocalFalconC
         "/v1/grid/",
         params
       );
-      
+
       return response;
-    }
+    },
+    client as any
   );
-  
+
   // Local Falcon - Search for Google My Business Locations
   registerTool(
     server,
@@ -101,11 +102,12 @@ export function registerLocalFalconTools(server: McpServer, config: LocalFalconC
         "/v1/places/",
         params
       );
-      
+
       return response;
-    }
+    },
+    client as any
   );
-  
+
   // Local Falcon - Get Business Ranking at Specific Coordinate Point
   registerTool(
     server,
@@ -123,11 +125,12 @@ export function registerLocalFalconTools(server: McpServer, config: LocalFalconC
         "/v1/result/",
         params
       );
-      
+
       return response;
-    }
+    },
+    client as any
   );
-  
+
   // Local Falcon - Keyword Search at a Specific Coordinate Point
   registerTool(
     server,
@@ -145,11 +148,12 @@ export function registerLocalFalconTools(server: McpServer, config: LocalFalconC
         "/v1/search/",
         params
       );
-      
+
       return response;
-    }
+    },
+    client as any
   );
-  
+
   // Local Falcon - Run a Full Grid Search
   registerTool(
     server,
@@ -170,8 +174,9 @@ export function registerLocalFalconTools(server: McpServer, config: LocalFalconC
         "/v1/scan/",
         params
       );
-      
+
       return response;
-    }
+    },
+    client as any
   );
 }

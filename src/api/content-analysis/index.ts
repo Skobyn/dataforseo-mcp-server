@@ -27,7 +27,8 @@ export function registerContentAnalysisTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Analysis Search
@@ -55,7 +56,8 @@ export function registerContentAnalysisTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Analysis Category
@@ -74,7 +76,8 @@ export function registerContentAnalysisTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Analysis Sentiment Analysis
@@ -93,7 +96,8 @@ export function registerContentAnalysisTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Content Analysis Rating Distribution
@@ -111,6 +115,7 @@ export function registerContentAnalysisTools(server: McpServer, apiClient: DataF
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 }
