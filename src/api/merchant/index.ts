@@ -26,7 +26,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Product Specs
@@ -47,7 +48,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Product Info
@@ -68,7 +70,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Sellers
@@ -89,7 +92,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Reviews
@@ -112,7 +116,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Locations
@@ -130,7 +135,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Google Languages
@@ -142,7 +148,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>("/merchant/google/languages");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Amazon Search
@@ -166,7 +173,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Amazon Product Info
@@ -187,7 +195,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Amazon Reviews
@@ -210,7 +219,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Amazon Locations
@@ -228,7 +238,8 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Merchant Amazon Languages
@@ -240,6 +251,7 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>("/merchant/amazon/languages");
       
       return response;
-    }
+    },
+    apiClient
   );
 }

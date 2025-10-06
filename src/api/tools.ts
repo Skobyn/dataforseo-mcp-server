@@ -8,17 +8,21 @@ import { DataForSeoClient } from "./client.js";
 export function registerTool<T extends z.ZodRawShape>(
   server: McpServer,
   name: string,
-  schema: T,
-  handler: (params: z.infer<z.ZodObject<T>>, client: DataForSeoClient) => Promise<any>
+  schema: z.ZodObject<T> | T,
+  handler: (params: z.infer<z.ZodObject<T>>, client: DataForSeoClient) => Promise<any>,
+  client: DataForSeoClient
 ) {
-  server.tool(
+  // Extract the shape from ZodObject if needed
+  const shape = schema instanceof z.ZodObject ? schema.shape : schema;
+
+  (server.tool as any)(
     name,
-    schema,
-    async (params, _context) => {
+    shape,
+    async (params: any, _context: any) => {
       try {
-        // We get the apiClient from the closure, not from context
-        const result = await handler(params as z.infer<z.ZodObject<T>>, _context.client as unknown as DataForSeoClient);
-        
+        // We get the apiClient from the closure
+        const result = await handler(params as z.infer<z.ZodObject<T>>, client);
+
         return {
           content: [
             {
@@ -29,7 +33,7 @@ export function registerTool<T extends z.ZodRawShape>(
         };
       } catch (error) {
         console.error(`Error in ${name} tool:`, error);
-        
+
         if (error instanceof Error) {
           return {
             content: [
@@ -43,7 +47,7 @@ export function registerTool<T extends z.ZodRawShape>(
             ]
           };
         }
-        
+
         return {
           content: [
             {
@@ -66,32 +70,36 @@ export function registerTool<T extends z.ZodRawShape>(
 export function registerTaskTool<PostT extends z.ZodRawShape>(
   server: McpServer,
   baseName: string,
-  postSchema: PostT,
+  postSchema: z.ZodObject<PostT> | PostT,
   postHandler: (params: z.infer<z.ZodObject<PostT>>, client: DataForSeoClient) => Promise<any>,
   readyHandler: (client: DataForSeoClient) => Promise<any>,
-  getHandler: (id: string, client: DataForSeoClient) => Promise<any>
+  getHandler: (id: string, client: DataForSeoClient) => Promise<any>,
+  client: DataForSeoClient
 ) {
   // Register POST tool
   registerTool(
     server,
     `${baseName}_post`,
     postSchema,
-    postHandler
+    postHandler,
+    client
   );
-  
+
   // Register READY tool
   registerTool(
     server,
     `${baseName}_ready`,
     {},
-    (_params, client) => readyHandler(client)
+    (_params, client) => readyHandler(client),
+    client
   );
-  
+
   // Register GET tool
   registerTool(
     server,
     `${baseName}_get`,
     { id: z.string() },
-    (params, client) => getHandler(params.id, client)
+    (params, client) => getHandler(params.id, client),
+    client
   );
 }

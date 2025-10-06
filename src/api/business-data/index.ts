@@ -23,7 +23,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Google Reviews
@@ -45,7 +46,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Google Locations
@@ -63,7 +65,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Google Languages
@@ -75,7 +78,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       const response = await client.get<DataForSeoResponse<any>>("/business_data/google/languages");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data TripAdvisor Search
@@ -97,7 +101,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data TripAdvisor Reviews
@@ -119,7 +124,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Trustpilot Search
@@ -142,7 +148,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Trustpilot Reviews
@@ -165,7 +172,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 
   // === ADDED SOCIAL MEDIA ENDPOINTS ===
@@ -188,7 +196,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Facebook Overview
@@ -207,7 +216,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Pinterest Search
@@ -227,7 +237,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Pinterest Info
@@ -246,7 +257,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Reddit Search
@@ -268,7 +280,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Reddit Info
@@ -287,7 +300,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === GOOGLE HOTELS ENDPOINTS ===
@@ -317,7 +331,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Google Hotels Info
@@ -342,7 +357,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Google Hotels Reviews
@@ -364,7 +380,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === BUSINESS LISTINGS ENDPOINTS ===
@@ -390,7 +407,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Business Listings Categories
@@ -408,7 +426,8 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Business Data Business Listings Locations
@@ -426,6 +445,7 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
 }

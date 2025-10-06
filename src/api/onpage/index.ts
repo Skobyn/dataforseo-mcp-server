@@ -23,7 +23,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Tasks Ready
@@ -35,7 +36,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       const response = await client.get<DataForSeoResponse<any>>("/on_page/tasks_ready");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Task Result Summary
@@ -49,7 +51,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       const response = await client.get<DataForSeoResponse<any>>(`/on_page/summary/${params.id}`);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Task Result Pages
@@ -70,7 +73,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Task Result Resources
@@ -92,7 +96,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Task Force Stop
@@ -109,7 +114,8 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // OnPage Duplicate Content
@@ -129,6 +135,7 @@ export function registerOnPageTools(server: McpServer, apiClient: DataForSeoClie
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 }

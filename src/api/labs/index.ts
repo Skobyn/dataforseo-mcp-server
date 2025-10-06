@@ -37,7 +37,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Related Keywords
@@ -52,7 +53,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Keyword Suggestions
@@ -67,7 +69,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Keyword Ideas
@@ -82,7 +85,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Historical Search Volume
@@ -102,7 +106,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Keyword Difficulty
@@ -121,7 +126,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Search Intent
@@ -140,7 +146,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Categories for Domain
@@ -155,7 +162,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Domain Rank Overview
@@ -170,7 +178,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Ranked Keywords
@@ -188,7 +197,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Competitors Domain
@@ -205,7 +215,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Domain Intersection
@@ -227,7 +238,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Subdomains
@@ -244,7 +256,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Relevant Pages
@@ -261,7 +274,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Traffic Estimation
@@ -280,7 +294,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === AMAZON LABS API ===
@@ -301,7 +316,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Amazon Related Keywords
@@ -318,7 +334,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Amazon Ranked Keywords
@@ -341,7 +358,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Amazon Product Competitors
@@ -363,7 +381,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === BING LABS API ===
@@ -382,7 +401,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Related Keywords
@@ -397,7 +417,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Domain Rank Overview
@@ -412,7 +433,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Ranked Keywords
@@ -430,7 +452,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Competitors Domain
@@ -447,7 +470,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === GOOGLE PLAY AND APP STORE LABS API ===
@@ -470,7 +494,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Play Ranked Apps
@@ -487,7 +512,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Play App Competitors
@@ -508,7 +534,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // App Store Keywords for App
@@ -529,7 +556,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // App Store Ranked Apps
@@ -546,7 +574,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // App Store App Competitors
@@ -567,7 +596,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // === META ENDPOINTS FOR LABS API ===
@@ -597,7 +627,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>(fullUrl);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Locations
@@ -620,7 +651,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>(fullUrl);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Languages
@@ -635,7 +667,8 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Available History
@@ -651,6 +684,7 @@ export function registerLabsTools(server: McpServer, apiClient: DataForSeoClient
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
 }

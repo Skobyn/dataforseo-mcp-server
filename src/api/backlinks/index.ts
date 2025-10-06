@@ -30,7 +30,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Backlinks List
@@ -47,7 +48,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Anchors
@@ -62,7 +64,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Backlinks Domain Pages
@@ -77,7 +80,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Domain Pages Summary
@@ -92,7 +96,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Referring Domains
@@ -107,7 +112,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Referring Networks
@@ -122,7 +128,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Backlinks
@@ -142,7 +149,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Referring Domains
@@ -162,7 +170,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Spam Score
@@ -179,7 +188,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bulk Rank Overview
@@ -196,7 +206,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Domain Competitors
@@ -211,7 +222,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Domain Intersection
@@ -231,7 +243,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Page Intersection
@@ -251,7 +264,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Timeseries New Lost Summary
@@ -269,7 +283,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Backlinks Index
@@ -281,7 +296,8 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       const response = await client.get<DataForSeoResponse<any>>("/backlinks/index");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Backlinks Status
@@ -293,6 +309,7 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       const response = await client.get<DataForSeoResponse<any>>("/backlinks/errors");
       
       return response;
-    }
+    },
+    apiClient
   );
 }

@@ -21,7 +21,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Ads Keywords Suggestions
@@ -40,7 +41,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Ads Search Volume
@@ -59,7 +61,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Ads Keywords Locations
@@ -77,7 +80,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>(url);
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Ads Keywords Languages
@@ -89,7 +93,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>("/keywords_data/google_ads/languages");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Ads Keywords Categories
@@ -101,7 +106,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       const response = await client.get<DataForSeoResponse<any>>("/keywords_data/google_ads/categories");
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Google Trends
@@ -123,7 +129,8 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
   
   // Bing Keyword Data
@@ -142,6 +149,7 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       );
       
       return response;
-    }
+    },
+    apiClient
   );
 }
