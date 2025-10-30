@@ -13,6 +13,7 @@ import { registerMerchantTools } from "./api/merchant/index.js";
 import { registerAppDataTools } from "./api/app-data/index.js";
 import { registerBusinessDataTools } from "./api/business-data/index.js";
 import { registerLocalFalconTools } from "./api/localfalcon/index.js";
+import { registerAiOptimizationTools } from "./api/ai-optimization/index.js";
 
 async function main() {
   // Get authentication credentials from environment variables
@@ -46,7 +47,8 @@ async function main() {
   registerMerchantTools(server, apiClient);
   registerAppDataTools(server, apiClient);
   registerBusinessDataTools(server, apiClient);
-  
+  registerAiOptimizationTools(server, apiClient);
+
   // Register third-party API tools
   
   // Local Falcon API (optional integration)
