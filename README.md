@@ -38,6 +38,7 @@ https://dataforseo.com/?aff=200885
 9. **Merchant API** - E-commerce data from Amazon and Google Shopping
 10. **App Data API** - Mobile app data from Google Play and App Store
 11. **Business Data API** - Business listing data from Google My Business, Trustpilot, and more
+12. **AI Optimization API** - LLM responses, AI scraper, and AI keyword data from ChatGPT, Claude, Gemini, and Perplexity
 
 #### Local Falcon API (Optional)
 1. **Calculate Grid Points** - Generate grid coordinates for local ranking analysis
@@ -137,6 +138,25 @@ The server exposes hundreds of tools across all integrated API categories. Below
 - `backlinks_summary` - Get a summary of a domain's backlink profile
 - `backlinks_backlinks` - Get a list of backlinks for a domain
 - `backlinks_referring_domains` - Get referring domains for a target
+- `backlinks_history` - Get historical backlink data for a target
+- `backlinks_timeseries_summary` - Get time series data on backlinks
+- `backlinks_bulk_new_lost_backlinks` - Get new and lost backlinks for multiple targets
+- `backlinks_bulk_new_lost_referring_domains` - Get new and lost referring domains for multiple targets
+- `backlinks_bulk_pages_summary` - Get page summaries for multiple targets
+
+### DataForSEO AI Optimization Tools
+- `ai_chatgpt_models` - Get list of available ChatGPT models
+- `ai_chatgpt_llm_responses_live` - Get live responses from ChatGPT
+- `ai_chatgpt_scraper_locations` - Get available locations for ChatGPT scraper
+- `ai_chatgpt_scraper_languages` - Get available languages for ChatGPT scraper
+- `ai_claude_models` - Get list of available Claude models
+- `ai_claude_llm_responses_live` - Get live responses from Claude
+- `ai_gemini_models` - Get list of available Gemini models
+- `ai_gemini_llm_responses_live` - Get live responses from Gemini
+- `ai_perplexity_models` - Get list of available Perplexity models
+- `ai_perplexity_llm_responses_live` - Get live responses from Perplexity
+- `ai_keyword_data_search_volume_live` - Get AI keyword search volume data
+- `ai_keyword_data_locations_and_languages` - Get available locations and languages for AI keyword data
 
 ### Local Falcon Tools (If Configured)
 - `localfalcon_calculate_grid_points` - Calculate grid points around a base coordinate
