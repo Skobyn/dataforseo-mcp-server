@@ -1,8 +1,12 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/skobyn-dataforseo-mcp-server-badge.png)](https://mseep.ai/app/skobyn-dataforseo-mcp-server)
-
 # SEO Tools MCP Server
 
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/skobyn-dataforseo-mcp-server-badge.png)](https://mseep.ai/app/skobyn-dataforseo-mcp-server)
+
 A comprehensive stdio MCP (Model Context Protocol) server for SEO APIs. This server allows LLMs (Large Language Models) to interact with DataForSEO API functions and other SEO tools.
+
+<a href="https://glama.ai/mcp/servers/@Skobyn/dataforseo-mcp-server">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@Skobyn/dataforseo-mcp-server/badge" alt="SEO Tools Server MCP server" />
+</a>
 
 ## Overview
 
