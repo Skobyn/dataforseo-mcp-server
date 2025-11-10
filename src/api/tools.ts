@@ -2,6 +2,9 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { DataForSeoClient } from "./client.js";
 
+// Global tool registry - stores both metadata and handler functions
+export const toolRegistry: Map<string, any> = new Map();
+
 /**
  * Base helper function to register an MCP tool for DataForSEO API
  */
@@ -15,53 +18,61 @@ export function registerTool<T extends z.ZodRawShape>(
   // Extract the shape from ZodObject if needed
   const shape = schema instanceof z.ZodObject ? schema.shape : schema;
 
-  (server.tool as any)(
-    name,
-    shape,
-    async (params: any, _context: any) => {
-      try {
-        // We get the apiClient from the closure
-        const result = await handler(params as z.infer<z.ZodObject<T>>, client);
+  // Create the tool handler wrapper
+  const toolHandler = async (params: any, _context: any) => {
+    try {
+      // We get the apiClient from the closure
+      const result = await handler(params as z.infer<z.ZodObject<T>>, client);
 
-        return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify(result, null, 2)
-            }
-          ]
-        };
-      } catch (error) {
-        console.error(`Error in ${name} tool:`, error);
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(result, null, 2)
+          }
+        ]
+      };
+    } catch (error) {
+      console.error(`Error in ${name} tool:`, error);
 
-        if (error instanceof Error) {
-          return {
-            content: [
-              {
-                type: "text",
-                text: JSON.stringify({
-                  error: error.message,
-                  stack: error.stack
-                }, null, 2)
-              }
-            ]
-          };
-        }
-
+      if (error instanceof Error) {
         return {
           content: [
             {
               type: "text",
               text: JSON.stringify({
-                error: "Unknown error occurred",
-                details: error
+                error: error.message,
+                stack: error.stack
               }, null, 2)
             }
           ]
         };
       }
+
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify({
+              error: "Unknown error occurred",
+              details: error
+            }, null, 2)
+          }
+        ]
+      };
     }
-  );
+  };
+
+  // Store in registry for tools/list AND HTTP bridge calls
+  toolRegistry.set(name, {
+    name,
+    description: '', // Will be set by individual registrations
+    inputSchema: schema instanceof z.ZodObject ? schema : z.object(schema as any),
+    handler: toolHandler // Store the handler for HTTP bridge
+  });
+
+  // Register the handler with the MCP server
+  (server.tool as any)(name, shape, toolHandler);
 }
 
 /**
