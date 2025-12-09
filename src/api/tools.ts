@@ -5,6 +5,18 @@ import { DataForSeoClient } from "./client.js";
 // Global tool registry - stores both metadata and handler functions
 export const toolRegistry: Map<string, any> = new Map();
 
+// Parse ENABLED_TOOLS from environment once at startup
+// Format: ENABLED_TOOLS="serp_google_maps_live,business_data_google_my_business_info"
+const enabledToolsEnv = process.env.ENABLED_TOOLS;
+const enabledTools = enabledToolsEnv
+  ? new Set(enabledToolsEnv.split(',').map(t => t.trim().toLowerCase()))
+  : null; // null means all enabled
+
+function isToolEnabled(name: string): boolean {
+  if (!enabledTools) return true; // No filter = all enabled
+  return enabledTools.has(name.toLowerCase());
+}
+
 /**
  * Base helper function to register an MCP tool for DataForSEO API
  */
@@ -15,6 +27,11 @@ export function registerTool<T extends z.ZodRawShape>(
   handler: (params: z.infer<z.ZodObject<T>>, client: DataForSeoClient) => Promise<any>,
   client: DataForSeoClient
 ) {
+  // Skip if tool not in ENABLED_TOOLS list
+  if (!isToolEnabled(name)) {
+    return;
+  }
+
   // Extract the shape from ZodObject if needed
   const shape = schema instanceof z.ZodObject ? schema.shape : schema;
 

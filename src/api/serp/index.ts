@@ -103,7 +103,7 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
-        "/serp/google/maps/live",
+        "/serp/google/maps/live/advanced",
         [params]
       );
       

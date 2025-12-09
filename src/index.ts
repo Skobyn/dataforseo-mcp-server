@@ -35,19 +35,31 @@ async function main() {
     version: "1.0.0",
   });
 
-  // Register tools for each DataForSEO API category
-  registerSerpTools(server, apiClient);
-  registerKeywordsTools(server, apiClient);
-  registerLabsTools(server, apiClient);
-  registerBacklinksTools(server, apiClient);
-  registerOnPageTools(server, apiClient);
-  registerDomainAnalyticsTools(server, apiClient);
-  registerContentAnalysisTools(server, apiClient);
-  registerContentGenerationTools(server, apiClient);
-  registerMerchantTools(server, apiClient);
-  registerAppDataTools(server, apiClient);
-  registerBusinessDataTools(server, apiClient);
-  registerAiOptimizationTools(server, apiClient);
+  // Parse enabled modules from environment variable
+  // Format: ENABLED_MODULES="SERP,BUSINESS_DATA,LABS" (comma-separated)
+  // If not set, all modules are enabled
+  const enabledModulesEnv = process.env.ENABLED_MODULES;
+  const enabledModules = enabledModulesEnv
+    ? new Set(enabledModulesEnv.split(',').map(m => m.trim().toUpperCase()))
+    : null; // null means all enabled
+
+  const isEnabled = (module: string) => !enabledModules || enabledModules.has(module);
+
+  // Register tools for each DataForSEO API category (conditionally)
+  if (isEnabled('SERP')) registerSerpTools(server, apiClient);
+  if (isEnabled('KEYWORDS_DATA')) registerKeywordsTools(server, apiClient);
+  if (isEnabled('LABS') || isEnabled('DATAFORSEO_LABS')) registerLabsTools(server, apiClient);
+  if (isEnabled('BACKLINKS')) registerBacklinksTools(server, apiClient);
+  if (isEnabled('ONPAGE')) registerOnPageTools(server, apiClient);
+  if (isEnabled('DOMAIN_ANALYTICS')) registerDomainAnalyticsTools(server, apiClient);
+  if (isEnabled('CONTENT_ANALYSIS')) registerContentAnalysisTools(server, apiClient);
+  if (isEnabled('CONTENT_GENERATION')) registerContentGenerationTools(server, apiClient);
+  if (isEnabled('MERCHANT')) registerMerchantTools(server, apiClient);
+  if (isEnabled('APP_DATA')) registerAppDataTools(server, apiClient);
+  if (isEnabled('BUSINESS_DATA')) registerBusinessDataTools(server, apiClient);
+  if (isEnabled('AI_OPTIMIZATION')) registerAiOptimizationTools(server, apiClient);
+
+  console.error(`Enabled modules: ${enabledModules ? Array.from(enabledModules).join(', ') : 'ALL'}`);
 
   // Register third-party API tools
   
