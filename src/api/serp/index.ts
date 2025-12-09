@@ -99,6 +99,10 @@ export function registerSerpTools(server: McpServer, apiClient: DataForSeoClient
     server,
     "serp_google_maps_live",
     googleOrganicLiveSchema.extend({
+      location_name: z.string().optional().describe("Full name of the location (e.g., 'London,England,United Kingdom')"),
+      location_code: z.number().optional().describe("The location code for the search (optional if location_coordinate provided)"),
+      location_coordinate: z.string().optional().describe("GPS coordinates as 'latitude,longitude,zoom' (e.g., '51.5074,-0.1278,15z'). Use for point-specific rankings."),
+      search_this_area: z.boolean().optional().describe("Restrict results to the displayed map area"),
       local_pack_type: z.enum(["maps", "local_pack"]).optional().describe("Type of local pack results")
     }),
     async (params, client) => {
