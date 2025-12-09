@@ -23,6 +23,7 @@ This implementation exposes all major DataForSEO API endpoints as MCP tools, whi
 - Detailed error reporting
 - Type-safe tool definitions with Zod schemas
 - Extensible architecture for adding new API integrations
+- Selective module and tool filtering via environment variables
 
 # Sign up for Data for Seo
 
@@ -96,6 +97,47 @@ export LOCALFALCON_API_KEY="your_localfalcon_api_key"
 npm start
 ```
 
+### Filtering Modules and Tools
+
+The server exposes hundreds of tools by default. When used with LLMs, the full tool list consumes significant context window space. You can reduce the number of exposed tools using environment variables to enable only the modules or tools you need.
+
+**Why filter?**
+- Reduce context usage
+- Faster tool discovery for the LLM
+- More focused responses
+
+#### Filter by Module
+
+Use `ENABLED_MODULES` to enable only specific API categories (comma-separated, case-insensitive):
+
+```bash
+export ENABLED_MODULES="SERP,BUSINESS_DATA,LABS"
+```
+
+Available modules:
+- `SERP` - Search engine results
+- `KEYWORDS_DATA` - Keyword research
+- `LABS` or `DATAFORSEO_LABS` - Advanced SEO analytics
+- `BACKLINKS` - Backlink analysis
+- `ONPAGE` - Website audits
+- `DOMAIN_ANALYTICS` - Domain data
+- `CONTENT_ANALYSIS` - Content evaluation
+- `CONTENT_GENERATION` - AI content generation
+- `MERCHANT` - E-commerce data
+- `APP_DATA` - Mobile app data
+- `BUSINESS_DATA` - Business listings
+- `AI_OPTIMIZATION` - LLM responses and AI data
+
+#### Filter by Individual Tool
+
+Use `ENABLED_TOOLS` for fine-grained control over specific tools (comma-separated, case-insensitive):
+
+```bash
+export ENABLED_TOOLS="serp_google_maps_live,business_data_google_my_business_info"
+```
+
+If neither variable is set, all modules and tools are enabled by default.
+
 ### Using with Claude or other LLMs
 
 This server implements the Model Context Protocol, which allows LLMs to interact with external systems in a standardized way. To use it with Claude, you'll need to integrate it with your LLM platform according to their specific MCP implementation.
@@ -107,6 +149,9 @@ See the examples directory for usage examples.
 ```bash
 # Run in development mode with hot reloading
 npm run dev
+
+# Run tests
+npm test
 ```
 
 ## Examples
