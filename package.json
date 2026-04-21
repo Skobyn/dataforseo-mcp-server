@@ -1,8 +1,19 @@
 {
   "name": "dataforseo-mcp-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A comprehensive stdio MCP server for DataForSEO API",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skobyn/dataforseo-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Skobyn/dataforseo-mcp-server/issues"
+  },
+  "homepage": "https://github.com/Skobyn/dataforseo-mcp-server#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",

@@ -8,6 +8,10 @@ A comprehensive stdio MCP (Model Context Protocol) server for SEO APIs. This ser
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@Skobyn/dataforseo-mcp-server/badge" alt="SEO Tools Server MCP server" />
 </a>
 
+## Note
+
+This branch (`fix/v1.1.0-endpoint-corrections`) includes corrections for ~40 endpoint bugs discovered by comparing the wrapper paths against official DataForSEO documentation. See [CHANGELOG.md](./CHANGELOG.md) for the full list.
+
 ## Overview
 
 The SEO Tools MCP Server enables seamless integration between LLMs like Claude and various SEO APIs, making it possible to perform SEO analysis, keyword research, backlink analysis, and many other SEO-related tasks directly through natural language interactions.
@@ -16,7 +20,7 @@ This implementation exposes all major DataForSEO API endpoints as MCP tools, whi
 
 ## Features
 
-- Comprehensive coverage of DataForSEO API endpoints
+- Comprehensive coverage of DataForSEO API endpoints (see CHANGELOG.md for bugs fixed in this version)
 - Optional integration with Local Falcon and other third-party SEO tools
 - Stdio transport for easy integration
 - Authentication handling
@@ -228,6 +232,13 @@ The server is designed to be extensible. To add support for additional SEO APIs:
 4. Add environment variable handling for authentication
 
 See the Local Falcon integration in `src/api/localfalcon/` for a template.
+
+## Security
+
+- Credentials (`DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `LOCALFALCON_API_KEY`) are read from environment variables only. Never commit them.
+- Copy `.env.example` to `.env` and fill in your own credentials.
+- The `.gitignore` excludes `.env`, `.env.*.local`, and other secret-storing paths.
+- Before contributing, run `npm audit` and fix any high/critical vulnerabilities.
 
 ## License
 
