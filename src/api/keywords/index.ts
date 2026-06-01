@@ -36,6 +36,13 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
         ? keywords
         : [keyword as string];
 
+      // Enforce the documented limit at runtime. Inputs can reach this handler
+      // without Zod parsing (e.g. via the HTTP bridge), so the schema constraint
+      // alone is not guaranteed — guard here to avoid a rejected API request.
+      if (keywordsArray.length > 20) {
+        return { error: "`keywords` accepts at most 20 items per the DataForSEO Google Ads API." };
+      }
+
       const response = await client.post<DataForSeoResponse<any>>(
         "/keywords_data/google_ads/keywords_for_keywords/live",
         [{ ...rest, keywords: keywordsArray }]
@@ -145,6 +152,13 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       category_code: z.coerce.number().optional().describe("Google Trends category code")
     }),
     async (params, client) => {
+      // Enforce the documented limit at runtime. Inputs can reach this handler
+      // without Zod parsing (e.g. via the HTTP bridge), so the schema's max(5)
+      // alone is not guaranteed — guard here to avoid a rejected API request.
+      if (params.keywords && params.keywords.length > 5) {
+        return { error: "`keywords` accepts at most 5 items per the DataForSEO Google Trends API." };
+      }
+
       const response = await client.post<DataForSeoResponse<any>>(
         "/keywords_data/google_trends/explore/live",
         [params]
@@ -183,6 +197,13 @@ export function registerKeywordsTools(server: McpServer, apiClient: DataForSeoCl
       const keywordsArray: string[] = keywords && keywords.length > 0
         ? keywords
         : [keyword as string];
+
+      // Enforce the documented limit at runtime. Inputs can reach this handler
+      // without Zod parsing (e.g. via the HTTP bridge), so the schema constraint
+      // alone is not guaranteed — guard here to avoid a rejected API request.
+      if (keywordsArray.length > 200) {
+        return { error: "`keywords` accepts at most 200 items per the DataForSEO Bing API." };
+      }
 
       const response = await client.post<DataForSeoResponse<any>>(
         "/keywords_data/bing/keywords_for_keywords/live",

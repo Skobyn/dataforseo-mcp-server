@@ -149,6 +149,14 @@ describe("keywords_google_ads_keywords_for_keyword", () => {
     ).resolves.not.toThrow();
     expect(mockPost).toHaveBeenCalled();
   });
+
+  it("returns a friendly error and does not call the API when >20 keywords are passed", async () => {
+    const result = await invoke(handlers["keywords_google_ads_keywords_for_keyword"], {
+      keywords: Array.from({ length: 21 }, (_, i) => `kw${i}`),
+    });
+    expect(result).toHaveProperty("error");
+    expect(mockPost).not.toHaveBeenCalled();
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -191,6 +199,14 @@ describe("keywords_bing_keywords_for_keywords", () => {
     expect(result).toHaveProperty("error");
     expect(mockPost).not.toHaveBeenCalled();
   });
+
+  it("returns a friendly error and does not call the API when >200 keywords are passed", async () => {
+    const result = await invoke(handlers["keywords_bing_keywords_for_keywords"], {
+      keywords: Array.from({ length: 201 }, (_, i) => `kw${i}`),
+    });
+    expect(result).toHaveProperty("error");
+    expect(mockPost).not.toHaveBeenCalled();
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -217,12 +233,14 @@ describe("keywords_google_trends_explore", () => {
     expect(mockPost).toHaveBeenCalled();
   });
 
-  it("schema declares max(5) — the limit is documented in the zod schema for API introspection", () => {
-    // The MCP framework passes raw params to handlers without running Zod parse,
-    // so the max(5) guard is enforced at the schema-documentation level (visible
-    // to callers via tool introspection), not at handler invocation time.
-    // This test simply verifies the handler is registered and reachable.
-    expect(handlers["keywords_google_trends_explore"]).toBeDefined();
+  it("returns a friendly error and does not call the API when >5 keywords are passed", async () => {
+    // Inputs can reach the handler without Zod parsing (e.g. via the HTTP
+    // bridge), so the handler enforces the max(5) limit itself.
+    const result = await invoke(handlers["keywords_google_trends_explore"], {
+      keywords: ["a", "b", "c", "d", "e", "f"],
+    });
+    expect(result).toHaveProperty("error");
+    expect(mockPost).not.toHaveBeenCalled();
   });
 });
 

@@ -149,6 +149,16 @@ describe("business_data_google_locations", () => {
     const url: string = httpClient.get.mock.calls[0][0];
     expect(url).not.toContain("?");
   });
+
+  it("accepts the deprecated `country` alias as an ISO code", async () => {
+    httpClient.get.mockResolvedValue(makeSuccessResponse());
+    await callTool(server, "business_data_google_locations", {
+      country: "US",
+    });
+    expect(httpClient.get).toHaveBeenCalledWith(
+      "/business_data/google/locations/us"
+    );
+  });
 });
 
 // --------------------------------------------------------------------------

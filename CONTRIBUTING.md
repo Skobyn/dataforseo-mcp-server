@@ -15,7 +15,7 @@ All tests live in `test/`. Each module has a `*-paths.test.ts` file that verifie
 
 - **TypeScript** — all files must compile cleanly with `tsc --noEmit`.
 - **Type hints** — every function must have explicit parameter and return types; avoid `any`.
-- **Zod schemas** — use `z.coerce.number()` (not `z.number()`) for numeric MCP tool inputs. MCP passes all inputs as strings; coercion prevents runtime errors.
+- **Zod schemas** — use `z.coerce.number()` (not `z.number()`) for numeric MCP tool inputs. MCP clients frequently pass numeric values as strings, so coercion lets the schema (used for tool introspection) and any validation layer that parses inputs accept stringified numbers. Note that handlers invoked directly via the HTTP bridge (`src/server-http.ts`) do not run Zod parsing, so enforce hard constraints (e.g. array length limits) in the handler rather than relying on the schema alone.
 - **No hardcoded credentials** — read credentials exclusively from `process.env`. See `.env.example`.
 - **Endpoint accuracy** — always verify the URL path against the official [DataForSEO documentation](https://docs.dataforseo.com/) before coding. Do not guess.
 

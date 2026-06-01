@@ -10,7 +10,7 @@ A comprehensive stdio MCP (Model Context Protocol) server for SEO APIs. This ser
 
 ## Note
 
-This branch (`fix/v1.1.0-endpoint-corrections`) includes corrections for ~40 endpoint bugs discovered by comparing the wrapper paths against official DataForSEO documentation. See [CHANGELOG.md](./CHANGELOG.md) for the full list.
+Version `1.1.0` includes corrections for ~40 endpoint bugs discovered by comparing the wrapper paths against official DataForSEO documentation. See [CHANGELOG.md](./CHANGELOG.md) for the full list.
 
 ## Overview
 

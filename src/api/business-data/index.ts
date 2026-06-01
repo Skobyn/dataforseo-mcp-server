@@ -87,18 +87,28 @@ export function registerBusinessDataTools(server: McpServer, apiClient: DataForS
   );
 
   // ─── GOOGLE LOCATIONS FIX ─────────────────────────────────────────────────
-  // FIX: country as ISO code path-segment, not query-param; field renamed to country_iso_code
+  // FIX: country as ISO code path-segment, not query-param; field renamed to country_iso_code.
+  // Backward-compat alias `country` is accepted and treated as an ISO code when it
+  // looks like one (1–3 alpha chars), mirroring serp_google_locations.
   registerTool(
     server,
     "business_data_google_locations",
     z.object({
       country_iso_code: z.string().optional().describe(
         "ISO country code (e.g. 'us', 'gb'). Appended as a path segment: /business_data/google/locations/<iso>"
+      ),
+      country: z.string().optional().describe(
+        "Deprecated: use country_iso_code instead. Two-letter ISO country code (e.g. 'us')."
       )
     }),
     async (params, client) => {
-      const url = params.country_iso_code
-        ? `/business_data/google/locations/${encodeURIComponent(params.country_iso_code)}`
+      const isoCode: string | undefined =
+        params.country_iso_code ??
+        (params.country && /^[a-zA-Z]{1,3}$/.test(params.country)
+          ? params.country
+          : undefined);
+      const url = isoCode
+        ? `/business_data/google/locations/${encodeURIComponent(isoCode.toLowerCase())}`
         : "/business_data/google/locations";
       const response = await client.get<DataForSeoResponse<any>>(url);
       return response;

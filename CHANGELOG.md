@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented here. Format: [Keep a Changelog](https://keepachangelog.com). Versioning: [Semver](https://semver.org).
 
+## [Unreleased]
+
+### Fixed (code-review follow-ups)
+
+- `business_data_google_locations`, `merchant_google_locations`, `merchant_amazon_locations`: restored backward-compatible `country` alias. Callers that still send `country` (when it looks like an ISO code) keep working; the ISO code is normalized to lowercase for the path segment. Mirrors the existing `serp_google_locations` behavior.
+- `keywords_google_ads_keywords_for_keyword` (max 20), `keywords_bing_keywords_for_keywords` (max 200), `keywords_google_trends_explore` (max 5): the documented array-length limits are now enforced in the handlers, not just declared in the Zod schema. This guards inputs that reach handlers without Zod parsing (e.g. via the HTTP bridge) and returns a friendly error instead of making an invalid API request.
+
+### Changed
+
+- `CONTRIBUTING.md`: clarified the `z.coerce.number()` guidance — coercion benefits schema introspection and validation layers; handlers invoked directly via the HTTP bridge do not run Zod parsing, so hard constraints must be enforced in the handler.
+- `README.md`: the version note now references `1.1.0` and the changelog instead of a feature-branch name.
+
 ## [1.1.0] - 2026-04-21
 
 ### Fixed

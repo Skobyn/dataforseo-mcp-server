@@ -318,17 +318,27 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
   // ---------------------------------------------------------------------------
 
   // Merchant Google Locations
+  // Backward-compat alias `country` is accepted and treated as an ISO code when it
+  // looks like one (1–3 alpha chars), mirroring serp_google_locations.
   registerTool(
     server,
     "merchant_google_locations",
     z.object({
       country_iso_code: z.string().optional().describe(
         "ISO country code (e.g. 'us', 'gb'). Omit to retrieve all locations."
+      ),
+      country: z.string().optional().describe(
+        "Deprecated: use country_iso_code instead. Two-letter ISO country code (e.g. 'us')."
       )
     }),
     async (params, client) => {
-      const url = params.country_iso_code
-        ? `/merchant/google/locations/${encodeURIComponent(params.country_iso_code)}`
+      const isoCode: string | undefined =
+        params.country_iso_code ??
+        (params.country && /^[a-zA-Z]{1,3}$/.test(params.country)
+          ? params.country
+          : undefined);
+      const url = isoCode
+        ? `/merchant/google/locations/${encodeURIComponent(isoCode.toLowerCase())}`
         : "/merchant/google/locations";
 
       return client.get<DataForSeoResponse<any>>(url);
@@ -337,17 +347,27 @@ export function registerMerchantTools(server: McpServer, apiClient: DataForSeoCl
   );
 
   // Merchant Amazon Locations
+  // Backward-compat alias `country` is accepted and treated as an ISO code when it
+  // looks like one (1–3 alpha chars), mirroring serp_google_locations.
   registerTool(
     server,
     "merchant_amazon_locations",
     z.object({
       country_iso_code: z.string().optional().describe(
         "ISO country code (e.g. 'us', 'gb'). Omit to retrieve all locations."
+      ),
+      country: z.string().optional().describe(
+        "Deprecated: use country_iso_code instead. Two-letter ISO country code (e.g. 'us')."
       )
     }),
     async (params, client) => {
-      const url = params.country_iso_code
-        ? `/merchant/amazon/locations/${encodeURIComponent(params.country_iso_code)}`
+      const isoCode: string | undefined =
+        params.country_iso_code ??
+        (params.country && /^[a-zA-Z]{1,3}$/.test(params.country)
+          ? params.country
+          : undefined);
+      const url = isoCode
+        ? `/merchant/amazon/locations/${encodeURIComponent(isoCode.toLowerCase())}`
         : "/merchant/amazon/locations";
 
       return client.get<DataForSeoResponse<any>>(url);
