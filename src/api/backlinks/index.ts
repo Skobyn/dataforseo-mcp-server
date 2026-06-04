@@ -2,9 +2,9 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { DataForSeoClient } from "../client.js";
 import { registerTool, registerTaskTool } from "../tools.js";
-import { 
-  DataForSeoResponse, 
-  TaskPostResponse, 
+import {
+  DataForSeoResponse,
+  TaskPostResponse,
   TaskReadyResponse,
   TaskGetResponse
 } from "../types.js";
@@ -12,8 +12,8 @@ import {
 // Backlinks API schemas
 const targetSchema = z.object({
   target: z.string().describe("Target domain, subdomain or URL to analyze"),
-  limit: z.number().optional().describe("Maximum number of results to return"),
-  offset: z.number().optional().describe("Offset for pagination"),
+  limit: z.coerce.number().optional().describe("Maximum number of results to return"),
+  offset: z.coerce.number().optional().describe("Offset for pagination"),
   filters: z.array(z.any()).optional().describe("Array of filter objects")
 });
 
@@ -28,12 +28,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/summary/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Backlinks List
   registerTool(
     server,
@@ -46,12 +46,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/backlinks/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Anchors
   registerTool(
     server,
@@ -62,12 +62,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/anchors/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Backlinks Domain Pages
   registerTool(
     server,
@@ -78,12 +78,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/domain_pages/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Domain Pages Summary
   registerTool(
     server,
@@ -94,12 +94,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/domain_pages_summary/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Referring Domains
   registerTool(
     server,
@@ -110,12 +110,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/referring_domains/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Referring Networks
   registerTool(
     server,
@@ -126,54 +126,54 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/referring_networks/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Bulk Backlinks
   registerTool(
     server,
     "backlinks_bulk_backlinks",
     z.object({
       targets: z.array(z.string()).describe("List of targets to analyze (domains, subdomains, URLs)"),
-      limit: z.number().optional().describe("Maximum number of results to return per target"),
-      offset: z.number().optional().describe("Offset for pagination"),
-      internal_list_limit: z.number().optional().describe("Maximum number of items in internal lists per target")
+      limit: z.coerce.number().optional().describe("Maximum number of results to return per target"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      internal_list_limit: z.coerce.number().optional().describe("Maximum number of items in internal lists per target")
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
         "/backlinks/bulk_backlinks/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Bulk Referring Domains
   registerTool(
     server,
     "backlinks_bulk_referring_domains",
     z.object({
       targets: z.array(z.string()).describe("List of targets to analyze (domains, subdomains, URLs)"),
-      limit: z.number().optional().describe("Maximum number of results to return per target"),
-      offset: z.number().optional().describe("Offset for pagination"),
-      internal_list_limit: z.number().optional().describe("Maximum number of items in internal lists per target")
+      limit: z.coerce.number().optional().describe("Maximum number of results to return per target"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      internal_list_limit: z.coerce.number().optional().describe("Maximum number of items in internal lists per target")
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
         "/backlinks/bulk_referring_domains/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Bulk Spam Score
   registerTool(
     server,
@@ -186,12 +186,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/bulk_spam_score/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Bulk Rank Overview
   registerTool(
     server,
@@ -204,12 +204,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/bulk_ranks/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Domain Competitors
   registerTool(
     server,
@@ -220,20 +220,20 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/competitors/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Domain Intersection
   registerTool(
     server,
     "backlinks_domain_intersection",
     z.object({
       targets: z.array(z.string()).min(2).max(20).describe("List of domains to compare"),
-      limit: z.number().optional().describe("Maximum number of results to return"),
-      offset: z.number().optional().describe("Offset for pagination"),
+      limit: z.coerce.number().optional().describe("Maximum number of results to return"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
       exclude_targets: z.boolean().optional().describe("Whether to exclude the target domains from the results")
     }),
     async (params, client) => {
@@ -241,20 +241,20 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/domain_intersection/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Page Intersection
   registerTool(
     server,
     "backlinks_page_intersection",
     z.object({
       targets: z.array(z.string()).min(2).max(20).describe("List of URLs to compare"),
-      limit: z.number().optional().describe("Maximum number of results to return"),
-      offset: z.number().optional().describe("Offset for pagination"),
+      limit: z.coerce.number().optional().describe("Maximum number of results to return"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
       exclude_targets: z.boolean().optional().describe("Whether to exclude the target URLs from the results")
     }),
     async (params, client) => {
@@ -262,12 +262,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/page_intersection/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Timeseries New Lost Summary
   registerTool(
     server,
@@ -281,12 +281,12 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
         "/backlinks/timeseries_new_lost_summary/live",
         [params]
       );
-      
+
       return response;
     },
     apiClient
   );
-  
+
   // Backlinks Index
   registerTool(
     server,
@@ -294,19 +294,25 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
     {},
     async (_params, client) => {
       const response = await client.get<DataForSeoResponse<any>>("/backlinks/index");
-      
+
       return response;
     },
     apiClient
   );
-  
-  // Backlinks Status
+
+  // Backlinks Errors — docs specify POST /backlinks/errors with optional body fields
   registerTool(
     server,
     "backlinks_errors",
-    {},
-    async (_params, client) => {
-      const response = await client.get<DataForSeoResponse<any>>("/backlinks/errors");
+    z.object({
+      limit: z.coerce.number().optional().describe("Maximum number of results to return"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      filtered_function: z.string().optional().describe("Filter by function name"),
+      datetime_from: z.string().optional().describe("Start datetime filter (ISO 8601)"),
+      datetime_to: z.string().optional().describe("End datetime filter (ISO 8601)")
+    }),
+    async (params, client) => {
+      const response = await client.post<DataForSeoResponse<any>>("/backlinks/errors", [params]);
 
       return response;
     },
@@ -326,13 +332,20 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
     apiClient
   );
 
-  // ID List
+  // ID List — docs specify POST /backlinks/id_list; datetime_from and datetime_to are REQUIRED
   registerTool(
     server,
     "backlinks_id_list",
-    {},
-    async (_params, client) => {
-      const response = await client.get<DataForSeoResponse<any>>("/backlinks/id_list");
+    z.object({
+      datetime_from: z.string().describe("Start datetime for the id list query (REQUIRED, ISO 8601)"),
+      datetime_to: z.string().describe("End datetime for the id list query (REQUIRED, ISO 8601)"),
+      limit: z.coerce.number().optional().describe("Maximum number of results to return"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      sort: z.string().optional().describe("Sort order"),
+      include_metadata: z.boolean().optional().describe("Include task metadata in results")
+    }),
+    async (params, client) => {
+      const response = await client.post<DataForSeoResponse<any>>("/backlinks/id_list", [params]);
 
       return response;
     },
@@ -385,9 +398,9 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       targets: z.array(z.string()).describe("List of targets to analyze (domains, subdomains, URLs)"),
       date_from: z.string().describe("Start date in YYYY-MM-DD format"),
       date_to: z.string().describe("End date in YYYY-MM-DD format"),
-      limit: z.number().optional().describe("Maximum number of results to return per target"),
-      offset: z.number().optional().describe("Offset for pagination"),
-      internal_list_limit: z.number().optional().describe("Maximum number of items in internal lists per target")
+      limit: z.coerce.number().optional().describe("Maximum number of results to return per target"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      internal_list_limit: z.coerce.number().optional().describe("Maximum number of items in internal lists per target")
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
@@ -408,9 +421,9 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
       targets: z.array(z.string()).describe("List of targets to analyze (domains, subdomains, URLs)"),
       date_from: z.string().describe("Start date in YYYY-MM-DD format"),
       date_to: z.string().describe("End date in YYYY-MM-DD format"),
-      limit: z.number().optional().describe("Maximum number of results to return per target"),
-      offset: z.number().optional().describe("Offset for pagination"),
-      internal_list_limit: z.number().optional().describe("Maximum number of items in internal lists per target")
+      limit: z.coerce.number().optional().describe("Maximum number of results to return per target"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      internal_list_limit: z.coerce.number().optional().describe("Maximum number of items in internal lists per target")
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
@@ -429,9 +442,9 @@ export function registerBacklinksTools(server: McpServer, apiClient: DataForSeoC
     "backlinks_bulk_pages_summary",
     z.object({
       targets: z.array(z.string()).describe("List of targets to analyze (domains, subdomains, URLs)"),
-      limit: z.number().optional().describe("Maximum number of results to return per target"),
-      offset: z.number().optional().describe("Offset for pagination"),
-      internal_list_limit: z.number().optional().describe("Maximum number of items in internal lists per target")
+      limit: z.coerce.number().optional().describe("Maximum number of results to return per target"),
+      offset: z.coerce.number().optional().describe("Offset for pagination"),
+      internal_list_limit: z.coerce.number().optional().describe("Maximum number of items in internal lists per target")
     }),
     async (params, client) => {
       const response = await client.post<DataForSeoResponse<any>>(
